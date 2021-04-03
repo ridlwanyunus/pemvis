@@ -1,5 +1,7 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-
+.root {
+	-fx-focus-color: transparent; 
+}
 #loginAnchorPane1 {
 	-fx-background-image: url('login2.png');
 	-fx-background-size: stretch ;
@@ -10,6 +12,23 @@
 	-fx-font-size: 14;
 }
 
-#lognButton {
+#loginButton {
 	-fx-font-family: "Poppins";
+}
+
+.buttonMenu {
+	-fx-background-color: #8e44ad;
+	-fx-text-fill: #fff;
+	-fx-focus-color: transparent;
+}
+
+.buttonMenuActive {
+	-fx-background-color: #fff;
+	-fx-text-fill: #8e44ad;
+	-fx-focus-color: transparent;
+}
+
+#btnLogout:focused {
+	-fx-background-color: #fff;
+	-fx-text-fill: #8e44ad;
 }
