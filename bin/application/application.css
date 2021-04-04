@@ -1,6 +1,7 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 .root {
 	-fx-focus-color: transparent; 
+	-fx-font-family: "Poppins";
 }
 #loginAnchorPane1 {
 	-fx-background-image: url('login2.png');
@@ -30,10 +31,21 @@
 	-fx-text-fill: #8e44ad;
 }
 
+.buttonMenu:hover .glyph-icon {
+	-fx-fill: #8e44ad;
+}
+
 .buttonMenuActive {
 	-fx-background-color: #fff;
 	-fx-text-fill: #8e44ad;
 	-fx-focus-color: transparent;
+}
+
+.buttonMenuActive .glyph-icon {
+	-fx-background-color: #fff;
+	-fx-text-fill: #8e44ad;
+	-fx-focus-color: transparent;
+	-fx-fill: #8e44ad;
 }
 
 #btnLogout:focused {
@@ -80,5 +92,5 @@
 
 .table-row-cell {
 	-fx-font-family: "Poppins";
-	-fx-font-weight: thin;
 }
+

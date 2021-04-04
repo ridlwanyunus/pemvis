@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Observable;
 import java.util.ResourceBundle;
@@ -8,12 +9,14 @@ import application.model.Pelanggan;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -74,7 +77,38 @@ public class DataPelangganController implements Initializable {
 		telepon.setCellValueFactory(new PropertyValueFactory<Pelanggan, String>("telepon"));
 		alamat.setCellValueFactory(new PropertyValueFactory<Pelanggan, String>("alamat"));
 		tablePelanggan.setItems(list);
-		
+		tablePelanggan.setRowFactory(
+			tv -> {
+				TableRow<Pelanggan>  row = new TableRow<>();
+				row.setOnMouseClicked(
+					event -> {
+						if(event.getClickCount() == 2 && (!(row.isEmpty()))) {
+							Pelanggan rowData = row.getItem();
+							System.out.println(rowData.getIdPelanggan());
+							FXMLLoader loader = new FXMLLoader(getClass().getResource("DataPelangganForm.fxml"));
+							try {
+								Parent root1 = (Parent) loader.load();
+								DataPelangganFormController controller = loader.getController();
+								controller.updateForm(rowData);
+								Scene scene = new Scene(root1);
+								String css = this.getClass().getResource("application.css").toExternalForm();
+								scene.getStylesheets().add(css);
+								Stage stage = new Stage();
+								Image image = new Image("application/img/Dva.png");
+								stage.getIcons().add(image);
+								stage.setTitle("Form Data Pelanggan");
+								stage.setScene(scene);
+								stage.show();
+							} catch(Exception e) {
+								e.printStackTrace();
+							}
+							
+						}
+					}
+				);
+				return row;
+			}
+		);
 	}
 
 	public void showForm(ActionEvent event) {
@@ -82,12 +116,18 @@ public class DataPelangganController implements Initializable {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("DataPelangganForm.fxml"));
 			Parent root1 = (Parent) loader.load();
 			
-			Stage stage = new Stage();
-			Image image = new Image("application/img/Dva.png");
-			stage.getIcons().add(image);
-			stage.setTitle("Form Data Pelanggan");
-			stage.setScene(new Scene(root1));
-			stage.show();
+			DataPelangganFormController controller = loader.getController();
+			controller.createForm(root1);
+			
+//			Scene scene = new Scene(root1);
+//			String css = this.getClass().getResource("application.css").toExternalForm();
+//			scene.getStylesheets().add(css);
+//			Stage stage = new Stage();
+//			Image image = new Image("application/img/Dva.png");
+//			stage.getIcons().add(image);
+//			stage.setTitle("Form Data Pelanggan");
+//			stage.setScene(scene);
+//			stage.show();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

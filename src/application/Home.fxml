@@ -21,7 +21,7 @@
                         <Insets />
                      </opaqueInsets>
                      <graphic>
-                        <FontAwesomeIconView glyphName="USER_CIRCLE" wrappingWidth="18.4000244140625" />
+                        <FontAwesomeIconView glyphName="USER_CIRCLE" styleClass="buttonMenu" wrappingWidth="18.4000244140625" />
                      </graphic></Button>
                   <Button fx:id="btnMenu1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnMenu1Hanlder" prefHeight="56.0" prefWidth="240.0" styleClass="buttonMenu" text="Menu 1">
                      <font>
@@ -31,7 +31,7 @@
                         <Insets />
                      </opaqueInsets>
                      <graphic>
-                        <FontAwesomeIconView glyphName="SHOPPING_CART" wrappingWidth="20.000028610229492" />
+                        <FontAwesomeIconView glyphName="SHOPPING_CART" styleClass="buttonMenu" wrappingWidth="20.000028610229492" />
                      </graphic>
                   </Button>
                   <Button fx:id="btnMenu2" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnMenu2Hanlder" prefHeight="56.0" prefWidth="240.0" styleClass="buttonMenu" text="Menu 2">
@@ -42,7 +42,7 @@
                         <Insets />
                      </opaqueInsets>
                      <graphic>
-                        <FontAwesomeIconView glyphName="ENVELOPE" wrappingWidth="22.399993896484375" />
+                        <FontAwesomeIconView glyphName="ENVELOPE" styleClass="buttonMenu" wrappingWidth="22.399993896484375" />
                      </graphic>
                   </Button>
                   <Button fx:id="btnMenu3" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnMenu3Hanlder" prefHeight="56.0" prefWidth="240.0" styleClass="buttonMenu" text="Menu 3">
@@ -53,7 +53,7 @@
                         <Insets />
                      </opaqueInsets>
                      <graphic>
-                        <FontAwesomeIconView glyphName="PENCIL" wrappingWidth="23.20001220703125" />
+                        <FontAwesomeIconView glyphName="PENCIL" styleClass="buttonMenu" wrappingWidth="23.20001220703125" />
                      </graphic>
                   </Button>
                   <Button fx:id="btnLogout" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#logout" prefHeight="56.0" prefWidth="240.0" styleClass="buttonMenu" text="  Logout">
@@ -64,7 +64,7 @@
                         <Insets />
                      </opaqueInsets>
                      <graphic>
-                        <FontAwesomeIconView glyphName="POWER_OFF" wrappingWidth="15.999969482421875" />
+                        <FontAwesomeIconView glyphName="POWER_OFF" styleClass="buttonMenu" wrappingWidth="15.999969482421875" />
                      </graphic>
                   </Button>
                </children>
