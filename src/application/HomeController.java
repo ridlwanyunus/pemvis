@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -33,31 +35,41 @@ public class HomeController {
 	@FXML
 	Button btnLogout;
 	
+	@FXML
+	AnchorPane homeAnchorPane2;
+	
 	private Parent root;
 	private Scene scene;
 	private Stage stage;
 	
 	
-	public void btnDataPelangganHanlder(ActionEvent event) {
-
+	public void btnDataPelangganHanlder(ActionEvent event) throws IOException {
 		resetButton();
 		btnDataPelanggan.getStyleClass().add("buttonMenuActive");
+		Node node = (Node) FXMLLoader.load(getClass().getResource("DataPelanggan.fxml"));
+		homeAnchorPane2.getChildren().setAll(node);
 	}
 	
-	public void btnMenu1Hanlder(ActionEvent event) {
+	public void btnMenu1Hanlder(ActionEvent event) throws IOException {
 		resetButton();
 		btnMenu1.getStyleClass().add("buttonMenuActive");
+		Node node = (Node) FXMLLoader.load(getClass().getResource("Menu1.fxml"));
+		homeAnchorPane2.getChildren().setAll(node);
 	}
 	
 	
-	public void btnMenu2Hanlder(ActionEvent event) {
+	public void btnMenu2Hanlder(ActionEvent event) throws IOException {
 		resetButton();
 		btnMenu2.getStyleClass().add("buttonMenuActive");
+		Node node = (Node) FXMLLoader.load(getClass().getResource("Menu2.fxml"));
+		homeAnchorPane2.getChildren().setAll(node);
 	}
 	
-	public void btnMenu3Hanlder(ActionEvent event) {
+	public void btnMenu3Hanlder(ActionEvent event) throws IOException {
 		resetButton();
 		btnMenu3.getStyleClass().add("buttonMenuActive");
+		Node node = (Node) FXMLLoader.load(getClass().getResource("Menu3.fxml"));
+		homeAnchorPane2.getChildren().setAll(node);
 	}
 	
 	public void btnLogoutHanlder(ActionEvent event) {

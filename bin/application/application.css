@@ -14,12 +14,20 @@
 
 #loginButton {
 	-fx-font-family: "Poppins";
+	-fx-font-weight: 800;
+	-fx-padding: 5 0 5 0;
 }
 
 .buttonMenu {
 	-fx-background-color: #8e44ad;
 	-fx-text-fill: #fff;
 	-fx-focus-color: transparent;
+	-fx-padding: 5 0 5 40;
+}
+
+.buttonMenu:hover {
+	-fx-background-color: #fff;
+	-fx-text-fill: #8e44ad;
 }
 
 .buttonMenuActive {
@@ -31,4 +39,46 @@
 #btnLogout:focused {
 	-fx-background-color: #fff;
 	-fx-text-fill: #8e44ad;
+}
+
+.btn-outline:hover {
+	-fx-border-width: 2px;
+	-fx-border-style: solid;
+	-fx-border-color: #8e44ad;
+	-fx-background-color: white;
+	-fx-text-fill: #8e44ad;
+	-fx-font-family: "Poppins";
+}
+
+.btn-outline {
+	-fx-border-width: 2px;
+	-fx-border-style: solid;
+	-fx-border-color: #8e44ad;
+	-fx-background-color: #8e44ad;
+	-fx-text-fill: #fff; 
+	-fx-font-family: "Poppins";
+}
+
+.glyph-icon {
+	-fx-fill: #fff;	
+}
+
+.btn-outline:hover .glyph-icon {
+	-fx-fill: #8e44ad;	
+}
+
+.table-view .column-header .label {
+	-fx-font-family: "Poppins";
+	-fx-background-color: #8e44ad;
+	-fx-text-fill: #fff;
+	-fx-padding: 10 0 10 0;
+}
+
+.table-row-cell:selected {
+	-fx-background-color: #8e44ad;
+}
+
+.table-row-cell {
+	-fx-font-family: "Poppins";
+	-fx-font-weight: thin;
 }
