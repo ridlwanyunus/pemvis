@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DataPelangganController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BarangController">
    <children>
       <HBox layoutX="50.0" layoutY="103.0" prefHeight="27.0" prefWidth="620.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="103.0">
          <children>
@@ -47,13 +47,13 @@
             </Button>
          </children>
       </HBox>
-      <TableView fx:id="tablePelanggan" layoutX="21.0" layoutY="108.0" prefHeight="200.0" prefWidth="624.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
+      <TableView fx:id="tableBarang" layoutX="21.0" layoutY="108.0" prefHeight="200.0" prefWidth="624.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
         <columns>
-          <TableColumn fx:id="idPelanggan" prefWidth="90.4000244140625" text="ID Pelanggan" />
-          <TableColumn fx:id="nama" prefWidth="147.20001220703125" text="Nama" />
-            <TableColumn fx:id="jenisKelamin" minWidth="5.60003662109375" prefWidth="96.0" text="Jenis Kelamin" />
-            <TableColumn fx:id="telepon" prefWidth="97.5999755859375" text="Telepon" />
-            <TableColumn fx:id="alamat" prefWidth="180.800048828125" text="Alamat" />
+          <TableColumn fx:id="kdBarang" prefWidth="90.4000244140625" text="Kode Barang" />
+          <TableColumn fx:id="namaBarang" prefWidth="173.5999755859375" text="Nama Barang" />
+            <TableColumn fx:id="jenisBarang" minWidth="5.60003662109375" prefWidth="102.4000244140625" text="Jenis" />
+            <TableColumn fx:id="hargaBeli" prefWidth="124.0" text="Harga Beli" />
+            <TableColumn fx:id="hargaJual" prefWidth="123.99993896484375" text="Harga Jual" />
         </columns>
       </TableView>
    </children>

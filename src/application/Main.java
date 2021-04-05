@@ -12,7 +12,13 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("LoginMenu.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginMenu.fxml"));
+			Parent root = loader.load();
+			
+			LoginController controller = loader.getController();
+			Image banner = new Image("application/login2.png");
+			controller.setBanner(banner);
+			
 			Scene scene = new Scene(root,960,540);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			String css = getClass().getResource("application.css").toExternalForm();

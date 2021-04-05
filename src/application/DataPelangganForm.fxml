@@ -28,7 +28,7 @@
                         <Font name="Poppins Regular" size="12.0" />
                      </font>
                   </Label>
-                  <TextField id="ff-poppins" fx:id="idPelanggan" />
+                  <TextField id="ff-poppins" fx:id="txtid" />
                   <Label text="Nama">
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -37,7 +37,7 @@
                         <Font name="Poppins Regular" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nama">
+                  <TextField fx:id="txtnm">
                      <font>
                         <Font name="Poppins Medium" size="12.0" />
                      </font></TextField>
@@ -49,7 +49,7 @@
                         <Font name="Poppins Regular" size="12.0" />
                      </font>
                   </Label>
-                  <RadioButton fx:id="bLakiLaki" mnemonicParsing="false" text="Laki-Laki">
+                  <RadioButton fx:id="rlaki" mnemonicParsing="false" text="Laki-Laki">
                      <toggleGroup>
                         <ToggleGroup fx:id="tgGender" />
                      </toggleGroup>
@@ -57,7 +57,7 @@
                         <Font name="Poppins Regular" size="12.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="bPerempuan" mnemonicParsing="false" text="Perempuan" toggleGroup="$tgGender">
+                  <RadioButton fx:id="rperempuan" mnemonicParsing="false" text="Perempuan" toggleGroup="$tgGender">
                      <font>
                         <Font name="Poppins Regular" size="12.0" />
                      </font></RadioButton>
@@ -69,7 +69,7 @@
                         <Font name="Poppins Regular" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="telepon">
+                  <TextField fx:id="txttelp">
                      <font>
                         <Font name="Poppins Regular" size="12.0" />
                      </font></TextField>
@@ -81,7 +81,7 @@
                         <Font name="Poppins Regular" size="12.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="alamat" prefHeight="200.0" prefWidth="200.0">
+                  <TextArea fx:id="txtalamat" prefHeight="200.0" prefWidth="200.0">
                      <font>
                         <Font name="Poppins Regular" size="12.0" />
                      </font></TextArea>
@@ -91,7 +91,7 @@
             <VBox prefHeight="300.0" prefWidth="121.0">
                <children>
                   <Label prefHeight="28.0" prefWidth="122.0" />
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" styleClass="btn-outline" text="Tambah">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#bsimpanActionPerformed" prefHeight="26.0" prefWidth="122.0" styleClass="btn-outline" text="Tambah">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
@@ -105,7 +105,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="26.0" prefWidth="131.0" styleClass="btn-outline" text="Ubah">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#bubahActionPerformed" prefHeight="26.0" prefWidth="131.0" styleClass="btn-outline" text="Ubah">
                      <graphic>
                         <FontAwesomeIconView glyphName="PENCIL" wrappingWidth="19.20001220703125" />
                      </graphic>
@@ -119,7 +119,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="26.0" prefWidth="131.0" styleClass="btn-outline" text="Hapus">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#bhapusActionPerformed" prefHeight="26.0" prefWidth="131.0" styleClass="btn-outline" text="Hapus">
                      <graphic>
                         <FontAwesomeIconView glyphName="ERASER" wrappingWidth="19.20001220703125" />
                      </graphic>
@@ -133,7 +133,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="26.0" prefWidth="131.0" styleClass="btn-outline" text="Batal">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#kosong" prefHeight="26.0" prefWidth="131.0" styleClass="btn-outline" text="Batal">
                      <graphic>
                         <FontAwesomeIconView glyphName="BACKWARD" wrappingWidth="19.20001220703125" />
                      </graphic>
@@ -147,7 +147,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="26.0" prefWidth="131.0" styleClass="btn-outline" text="Keluar">
+                  <Button fx:id="closeButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#bkeluarActionPerformed" prefHeight="26.0" prefWidth="131.0" styleClass="btn-outline" text="Keluar">
                      <graphic>
                         <FontAwesomeIconView glyphName="WINDOW_CLOSE" wrappingWidth="19.20001220703125" />
                      </graphic>

@@ -23,7 +23,7 @@
                      <graphic>
                         <FontAwesomeIconView glyphName="USER_CIRCLE" styleClass="buttonMenu" wrappingWidth="18.4000244140625" />
                      </graphic></Button>
-                  <Button fx:id="btnMenu1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnMenu1Hanlder" prefHeight="56.0" prefWidth="240.0" styleClass="buttonMenu" text="Menu 1">
+                  <Button fx:id="btnMenu1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnMenu1Hanlder" prefHeight="56.0" prefWidth="240.0" styleClass="buttonMenu" text="Barang">
                      <font>
                         <Font name="Poppins Regular" size="12.0" />
                      </font>

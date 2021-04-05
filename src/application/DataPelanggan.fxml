@@ -4,8 +4,10 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
@@ -13,7 +15,7 @@
    <children>
       <HBox layoutX="50.0" layoutY="103.0" prefHeight="27.0" prefWidth="620.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="103.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#showForm" prefHeight="26.0" prefWidth="112.0" text="Tambah">
+            <Button mnemonicParsing="false" onAction="#showForm" prefHeight="32.0" prefWidth="111.0" text="Tambah">
                <opaqueInsets>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
@@ -23,6 +25,24 @@
                </styleClass>
                <graphic>
                   <FontAwesomeIconView glyphName="PLUS" wrappingWidth="17.428571224212646" />
+               </graphic>
+            </Button>
+            <Label prefHeight="31.0" prefWidth="18.0" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#refresh" prefHeight="32.0" prefWidth="94.0" styleClass="btn-outline" text="Refresh">
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLAY" wrappingWidth="21.428569793701172" />
+               </graphic>
+            </Button>
+            <Label prefHeight="18.0" prefWidth="205.0" />
+            <TextField fx:id="txtcari" prefHeight="34.0" prefWidth="150.0" />
+            <Button mnemonicParsing="false" onAction="#refresh" prefHeight="26.0" prefWidth="44.0" styleClass="btn-outline">
+               <graphic>
+                  <FontAwesomeIconView glyphName="QUESTION">
+                     <styleClass>
+                        <String fx:value="btn-outline" />
+                        <String fx:value="btn-outline:hover" />
+                     </styleClass>
+                  </FontAwesomeIconView>
                </graphic>
             </Button>
          </children>

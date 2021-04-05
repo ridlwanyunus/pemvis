@@ -53,7 +53,7 @@ public class HomeController {
 	public void btnMenu1Hanlder(ActionEvent event) throws IOException {
 		resetButton();
 		btnMenu1.getStyleClass().add("buttonMenuActive");
-		Node node = (Node) FXMLLoader.load(getClass().getResource("Menu1.fxml"));
+		Node node = (Node) FXMLLoader.load(getClass().getResource("Barang.fxml"));
 		homeAnchorPane2.getChildren().setAll(node);
 	}
 	

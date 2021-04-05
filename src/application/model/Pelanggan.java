@@ -2,42 +2,56 @@ package application.model;
 
 public class Pelanggan {
 	
-	private int idPelanggan;
-	private String nama;
-	private String jenisKelamin;
+	private String id;
+	private String nmplgn;
+	private String jenis;
 	private String telepon;
 	private String Alamat;
 	
 	public Pelanggan() {
 		
 	}
+
 	
-	public Pelanggan(int idPelanggan, String nama, String jenisKelamin, String telepon, String alamat) {
+	public Pelanggan(String id, String nmplgn, String jenis, String telepon, String alamat) {
 		super();
-		this.idPelanggan = idPelanggan;
-		this.nama = nama;
-		this.jenisKelamin = jenisKelamin;
+		this.id = id;
+		this.nmplgn = nmplgn;
+		this.jenis = jenis;
 		this.telepon = telepon;
 		Alamat = alamat;
 	}
-	public int getIdPelanggan() {
-		return idPelanggan;
+
+
+	public String getId() {
+		return id;
 	}
-	public void setIdPelanggan(int idPelanggan) {
-		this.idPelanggan = idPelanggan;
+
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getNama() {
-		return nama;
+
+
+	public String getNmplgn() {
+		return nmplgn;
 	}
-	public void setNama(String nama) {
-		this.nama = nama;
+
+
+	public void setNmplgn(String nmplgn) {
+		this.nmplgn = nmplgn;
 	}
-	public String getJenisKelamin() {
-		return jenisKelamin;
+
+
+	public String getJenis() {
+		return jenis;
 	}
-	public void setJenisKelamin(String jenisKelamin) {
-		this.jenisKelamin = jenisKelamin;
+
+
+	public void setJenis(String jenis) {
+		this.jenis = jenis;
 	}
+
+
 	public String getTelepon() {
 		return telepon;
 	}

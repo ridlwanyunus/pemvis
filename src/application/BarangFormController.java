@@ -9,7 +9,9 @@ import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 import application.koneksi.Koneksi;
+import application.model.Barang;
 import application.model.Pelanggan;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,14 +19,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class DataPelangganFormController implements Initializable{
-	
+public class BarangFormController implements Initializable {
 	@FXML
 	private TextField txtid;
 	
@@ -32,16 +34,13 @@ public class DataPelangganFormController implements Initializable{
 	private TextField txtnm;
 	
 	@FXML
-	private RadioButton rlaki;
+	private ChoiceBox<String> cbjenis=new ChoiceBox<>();
 	
 	@FXML
-	private RadioButton rperempuan;
+	private TextField txthbeli;
 	
 	@FXML
-	private TextField txttelp;
-	
-	@FXML
-	private TextArea txtalamat;
+	private TextField txthjual;
 	
 	@FXML
 	private Button closeButton;
@@ -50,7 +49,9 @@ public class DataPelangganFormController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		//idPelanggan.setText("Hello there");
+//		cbjenis = new ChoiceBox(FXCollections.observableArrayList("Makanan", "Minuman"));
+		cbjenis.getItems().add("Makanan");
+		cbjenis.getItems().add("Minuman");
 	}
 	
 	
@@ -72,21 +73,16 @@ public class DataPelangganFormController implements Initializable{
 	}
 	
 	public void bsimpanActionPerformed(ActionEvent event) throws IOException {
-		String jenis = null;
-		if(rlaki.isSelected()) {
-			jenis = "Laki-Laki";
-		} else 
-		if(rperempuan.isSelected()) {
-			jenis = "Perempuan";
-		}
-		String sql = "insert into pelanggan values (?,?,?,?,?)";
+		String jenis = cbjenis.getValue();
+		
+		String sql = "insert into barang values (?,?,?,?,?)";
 		try {
 			PreparedStatement stat = conn.prepareStatement(sql);
 			stat.setString(1, txtid.getText());
 			stat.setString(2, txtnm.getText());
 			stat.setString(3, jenis);
-			stat.setString(4, txttelp.getText());
-			stat.setString(5, txtalamat.getText());
+			stat.setInt(4, new Integer(txthbeli.getText()));
+			stat.setInt(5,  new Integer(txthjual.getText()));
 			stat.execute();
 			
 			myAlert("Data berhasil disimpan");
@@ -98,26 +94,21 @@ public class DataPelangganFormController implements Initializable{
 	}
 	
 	public void bubahActionPerformed(ActionEvent event) throws IOException {
-		String jenis = null;
-		if(rlaki.isSelected()) {
-			jenis = "Laki-Laki";
-		} else 
-		if(rperempuan.isSelected()) {
-			jenis = "Perempuan";
-		}
-		String sql = "update pelanggan set nmplgn=?, jenis=?, telepon=?, alamat=? where id='"+txtid.getText()+"'";
+		String jenis = cbjenis.getValue();
+		
+		String sql = "update barang set nm_barang=?, jenis=?, hargabeli=?, hargajual=? where kd_barang='"+txtid.getText()+"'";
 		try {
 			PreparedStatement stat = conn.prepareStatement(sql);
 			stat.setString(1, txtnm.getText());
 			stat.setString(2, jenis);
-			stat.setString(3, txttelp.getText());
-			stat.setString(4, txtalamat.getText());
+			stat.setInt(3, new Integer(txthbeli.getText()));
+			stat.setInt(4, new Integer(txthjual.getText()));
 			stat.executeUpdate();
 			
 			myAlert("Data berhasil diubah");
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("DataPelanggan.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("Barang.fxml"));
 			Parent root = loader.load();
-			DataPelangganController controller = loader.getController();
+			BarangController controller = loader.getController();
 			controller.datatable();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -129,7 +120,7 @@ public class DataPelangganFormController implements Initializable{
 	public void bhapusActionPerformed(ActionEvent event) {
 		int ok = JOptionPane.showConfirmDialog(null, "hapus", "Konfirmasi dialog", JOptionPane.YES_NO_OPTION);
 		if(ok==0) {
-			String sql = "delete from pelanggan where id='"+txtid.getText()+"'";
+			String sql = "delete from barang where kd_barang='"+txtid.getText()+"'";
 			try {
 				PreparedStatement stat = conn.prepareStatement(sql);
 				stat.executeUpdate();
@@ -160,10 +151,9 @@ public class DataPelangganFormController implements Initializable{
 	public void kosong(ActionEvent event) {
 		txtid.setText("");
 		txtnm.setText("");
-		rperempuan.setSelected(false);
-		rlaki.setSelected(false);
-		txttelp.setText("");
-		txtalamat.setText("");
+		cbjenis.setValue("");
+		txthbeli.setText("");
+		txthjual.setText("");
 	}
 	
 	public void bkeluarActionPerformed(ActionEvent event) {
@@ -175,19 +165,13 @@ public class DataPelangganFormController implements Initializable{
 		
 	}
 	
-	public void updateForm(Pelanggan pelanggan) {
-		txtid.setText(String.valueOf(pelanggan.getId()));
+	public void updateForm(Barang barang) {
+		txtid.setText(String.valueOf(barang.getKdBarang()));
 		txtid.setEditable(false);
 		txtid.setDisable(true);
-		txtnm.setText(pelanggan.getNmplgn());
-		if(pelanggan.getJenis().equalsIgnoreCase("Perempuan")) {
-			rperempuan.setSelected(true);
-		} else {
-			rlaki.setSelected(true);
-		}
-		txttelp.setText(pelanggan.getTelepon());
-		txtalamat.setText(pelanggan.getAlamat());
+		txtnm.setText(barang.getNmBarang());
+		cbjenis.setValue(barang.getJenis());
+		txthbeli.setText(String.valueOf(barang.getHargabeli()));
+		txthjual.setText(String.valueOf(barang.getHargajual()));
 	}
-
-
 }

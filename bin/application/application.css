@@ -1,21 +1,19 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
 .root {
 	-fx-focus-color: transparent; 
 	-fx-font-family: "Poppins";
 }
 #loginAnchorPane1 {
-	-fx-background-image: url('login2.png');
 	-fx-background-size: stretch ;
 }
 
 #loginAnchorPane2 {
-	-fx-font-family: "Caviar Dreams";
+	-fx-font-family: IndieFlower;
 	-fx-font-size: 14;
 }
 
 #loginButton {
-	-fx-font-family: "Poppins";
-	-fx-font-weight: 800;
 	-fx-padding: 5 0 5 0;
 }
 
@@ -27,6 +25,18 @@
 }
 
 .buttonMenu:hover {
+	-fx-background-color: #fff;
+	-fx-text-fill: #8e44ad;
+}
+
+#loginButton {
+	-fx-background-color: #8e44ad;
+	-fx-text-fill: #fff;
+	-fx-focus-color: transparent;
+	-fx-padding: 5 0 5 40;
+}
+
+#loginButton:hover {
 	-fx-background-color: #fff;
 	-fx-text-fill: #8e44ad;
 }
