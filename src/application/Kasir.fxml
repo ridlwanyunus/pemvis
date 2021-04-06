@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.KasirController">
+   <children>
+      <TableView fx:id="tableKasir" layoutX="21.0" layoutY="108.0" prefHeight="200.0" prefWidth="624.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
+        <columns>
+          <TableColumn fx:id="idKasir" prefWidth="70.4000244140625" text="ID Kasir" />
+          <TableColumn fx:id="nmKasir" prefWidth="132.79998779296875" text="Nama Kasir" />
+            <TableColumn fx:id="jenisKelamin" minWidth="5.60003662109375" prefWidth="93.5999755859375" text="Jenis Kelamin" />
+            <TableColumn fx:id="telepon" prefWidth="92.0" text="Telepon" />
+            <TableColumn fx:id="agama" text="Agama" />
+            <TableColumn fx:id="alamat" prefWidth="149.5999755859375" text="Alamat" />
+        </columns>
+      </TableView>
+      <HBox layoutX="50.0" layoutY="103.0" prefHeight="27.0" prefWidth="620.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="103.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#showForm" prefHeight="32.0" prefWidth="111.0" text="Tambah">
+               <opaqueInsets>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </opaqueInsets>
+               <styleClass>
+                  <String fx:value="btn-outline" />
+                  <String fx:value="btn-outline:hover" />
+               </styleClass>
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLUS" wrappingWidth="17.428571224212646" />
+               </graphic>
+            </Button>
+            <Label prefHeight="31.0" prefWidth="18.0" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#refresh" prefHeight="32.0" prefWidth="94.0" styleClass="btn-outline" text="Refresh">
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLAY" wrappingWidth="21.428569793701172" />
+               </graphic>
+            </Button>
+            <Label prefHeight="18.0" prefWidth="205.0" />
+            <TextField fx:id="txtcari" prefHeight="34.0" prefWidth="150.0" />
+            <Button mnemonicParsing="false" onAction="#refresh" prefHeight="26.0" prefWidth="44.0" styleClass="btn-outline">
+               <graphic>
+                  <FontAwesomeIconView glyphName="QUESTION">
+                     <styleClass>
+                        <String fx:value="btn-outline" />
+                        <String fx:value="btn-outline:hover" />
+                     </styleClass>
+                  </FontAwesomeIconView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

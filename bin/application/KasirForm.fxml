@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="640.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.KasirFormController">
+   <children>
+      <HBox layoutX="116.0" layoutY="31.0" prefHeight="410.0" prefWidth="540.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="60.0">
+         <children>
+            <VBox prefHeight="419.0" prefWidth="399.0">
+               <children>
+                  <Label text="ID Kasir">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Poppins Regular" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField id="ff-poppins" fx:id="txtid" />
+                  <Label text="Nama Kasir">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Poppins Regular" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtnm">
+                     <font>
+                        <Font name="Poppins Medium" size="12.0" />
+                     </font></TextField>
+                  <Label text="Jenis Kelamin">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Poppins Regular" size="12.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="rlaki" mnemonicParsing="false" text="Laki-Laki">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="tgGender" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="rperempuan" mnemonicParsing="false" text="Perempuan" toggleGroup="$tgGender" />
+                  <Label text="Nomor Telepon">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Poppins Regular" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txttelp">
+                     <font>
+                        <Font name="Poppins Regular" size="12.0" />
+                     </font></TextField>
+                  <Label text="Agama">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Poppins Regular" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtagama" prefHeight="27.0" prefWidth="399.0" />
+                  <Label text="Alamat">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Poppins Regular" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="txtalamat" prefHeight="80.0" prefWidth="399.0">
+                     <font>
+                        <Font name="Poppins Regular" size="12.0" />
+                     </font>
+                  </TextArea>
+                  <Label text="Password">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Poppins Regular" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtpassword">
+                     <font>
+                        <Font name="Poppins Regular" size="12.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox prefHeight="300.0" prefWidth="19.0" />
+            <VBox prefHeight="300.0" prefWidth="121.0">
+               <children>
+                  <Label prefHeight="28.0" prefWidth="122.0" />
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#bsimpanActionPerformed" prefHeight="26.0" prefWidth="122.0" styleClass="btn-outline" text="Tambah">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SAVE" wrappingWidth="19.20001220703125" />
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#bubahActionPerformed" prefHeight="26.0" prefWidth="131.0" styleClass="btn-outline" text="Ubah">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="PENCIL" wrappingWidth="19.20001220703125" />
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#bhapusActionPerformed" prefHeight="26.0" prefWidth="131.0" styleClass="btn-outline" text="Hapus">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="ERASER" wrappingWidth="19.20001220703125" />
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#kosong" prefHeight="26.0" prefWidth="131.0" styleClass="btn-outline" text="Batal">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="BACKWARD" wrappingWidth="19.20001220703125" />
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="closeButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#bkeluarActionPerformed" prefHeight="26.0" prefWidth="131.0" styleClass="btn-outline" text="Keluar">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="WINDOW_CLOSE" wrappingWidth="19.20001220703125" />
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="38.0" prefWidth="640.0">
+         <children>
+            <Pane prefHeight="38.0" prefWidth="666.0" style="-fx-background-color: #8e44ad;" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
