@@ -155,7 +155,7 @@ public class KasirController implements Initializable {
 				Stage stage = new Stage();
 				Image image = new Image("application/img/Dva.png");
 				stage.getIcons().add(image);
-				stage.setTitle("Form Data Pelanggan");
+				stage.setTitle("Form Kasir");
 				stage.setScene(scene);
 				stage.show();
 			} catch(Exception e) {

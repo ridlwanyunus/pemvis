@@ -145,7 +145,7 @@ public class BarangController implements Initializable {
 				Stage stage = new Stage();
 				Image image = new Image("application/img/Dva.png");
 				stage.getIcons().add(image);
-				stage.setTitle("Form Data Pelanggan");
+				stage.setTitle("Form Barang");
 				stage.setScene(scene);
 				stage.show();
 			} catch(Exception e) {

@@ -80,8 +80,9 @@ public class LoginController implements Initializable{
 		
 		String css = getClass().getResource("application.css").toExternalForm();
 		scene.getStylesheets().add(css);
-		
-		stage.setTitle("Pemrograman Pemvis");
+		Image imageBanner = new Image("application/login2.png");
+		imageViewLogin.setImage(imageBanner);
+		stage.setTitle("Login Pemvis");
 		Image image = new Image("application/img/Dva.png");
 		stage.getIcons().add(image);
 		stage.setScene(scene);

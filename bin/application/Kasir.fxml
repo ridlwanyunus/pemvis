@@ -13,14 +13,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.KasirController">
    <children>
-      <TableView fx:id="tableKasir" layoutX="21.0" layoutY="108.0" prefHeight="200.0" prefWidth="624.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
+      <TableView fx:id="tableKasir" layoutX="21.0" layoutY="108.0" prefHeight="340.0" prefWidth="620.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
         <columns>
           <TableColumn fx:id="idKasir" prefWidth="70.4000244140625" text="ID Kasir" />
           <TableColumn fx:id="nmKasir" prefWidth="132.79998779296875" text="Nama Kasir" />
             <TableColumn fx:id="jenisKelamin" minWidth="5.60003662109375" prefWidth="93.5999755859375" text="Jenis Kelamin" />
             <TableColumn fx:id="telepon" prefWidth="92.0" text="Telepon" />
-            <TableColumn fx:id="agama" text="Agama" />
-            <TableColumn fx:id="alamat" prefWidth="149.5999755859375" text="Alamat" />
+            <TableColumn fx:id="agama" prefWidth="109.5999755859375" text="Agama" />
+            <TableColumn fx:id="alamat" prefWidth="120.0" text="Alamat" />
         </columns>
       </TableView>
       <HBox layoutX="50.0" layoutY="103.0" prefHeight="27.0" prefWidth="620.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="103.0">

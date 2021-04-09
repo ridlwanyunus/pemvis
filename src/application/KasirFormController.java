@@ -21,18 +21,30 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class KasirFormController implements Initializable {
+	
+	@FXML
+	private Label lblIdKasir;
+	
 	@FXML
 	private TextField txtid;
 	
 	@FXML
+	private Label lblnamaKasir;
+	
+	@FXML
 	private TextField txtnm;
+	
+	@FXML
+	private Label lblJenis;
 	
 	@FXML
 	private RadioButton rlaki;
@@ -41,25 +53,68 @@ public class KasirFormController implements Initializable {
 	private RadioButton rperempuan;
 	
 	@FXML
+	private Label lblTelp;
+	
+	@FXML
 	private TextField txttelp;
+	
+	@FXML
+	private Label lblAgama;
 	
 	@FXML
 	private TextField txtagama;
 	
 	@FXML
+	private Label lblAlamat;
+	
+	@FXML
 	private TextArea txtalamat;
+	
+	@FXML
+	private Label lblPassword;
 	
 	@FXML
 	private TextField txtpassword;
 	
 	@FXML
+	private Button btnTambah;
+	@FXML
+	private Button btnUbah;
+	@FXML
+	private Button btnHapus;
+	@FXML
+	private Button btnBatal;
+	@FXML
 	private Button closeButton;
+	
+	
 	
 	private Connection conn = new Koneksi().connect();
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
+		Font font = Font.loadFont(getClass().getResourceAsStream("Poppins-Light.ttf"), 13);
+		lblIdKasir.setFont(font);
+		txtid.setFont(font);
+		lblnamaKasir.setFont(font);
+		txtnm.setFont(font);
+		lblJenis.setFont(font);
+		rlaki.setFont(font);
+		rperempuan.setFont(font);
+		lblTelp.setFont(font);
+		txttelp.setFont(font);
+		lblAgama.setFont(font);
+		txtagama.setFont(font);
+		lblAlamat.setFont(font);
+		txtalamat.setFont(font);
+		lblPassword.setFont(font);
+		txtpassword.setFont(font);
+		
+		btnTambah.setFont(font);
+		btnUbah.setFont(font);
+		btnHapus.setFont(font);
+		btnBatal.setFont(font);
+		closeButton.setFont(font);
 	}
 	
 	
@@ -72,7 +127,7 @@ public class KasirFormController implements Initializable {
 			Stage stage = new Stage();
 			Image image = new Image("application/img/Dva.png");
 			stage.getIcons().add(image);
-			stage.setTitle("Form Data Pelanggan");
+			stage.setTitle("Form Kasir");
 			stage.setScene(scene);
 			stage.show();
 		} catch (Exception e) {
@@ -167,7 +222,7 @@ public class KasirFormController implements Initializable {
 		Stage stage = new Stage();
 		Image image = new Image("application/img/Dva.png");
 		stage.getIcons().add(image);
-		stage.setTitle("Form Data Pelanggan");
+		stage.setTitle("Alert Box");
 		stage.setScene(scene);
 		stage.show();
 	}
