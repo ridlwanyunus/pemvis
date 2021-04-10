@@ -46,6 +46,8 @@ public class DataPelangganFormController implements Initializable{
 	@FXML
 	private Button closeButton;
 	
+	private DataPelangganController parentController;
+	
 	private Connection conn = new Koneksi().connect();
 	
 	@Override
@@ -115,10 +117,6 @@ public class DataPelangganFormController implements Initializable{
 			stat.executeUpdate();
 			
 			myAlert("Data berhasil diubah");
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("DataPelanggan.fxml"));
-			Parent root = loader.load();
-			DataPelangganController controller = loader.getController();
-			controller.datatable();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -135,6 +133,7 @@ public class DataPelangganFormController implements Initializable{
 				stat.executeUpdate();
 				JOptionPane.showMessageDialog(null, "Data "+txtid.getText()+" berhasil dihapus");
 				kosong(event);
+				parentController.refresh(event);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, "Data gagal dihapus");
 			}
@@ -167,6 +166,7 @@ public class DataPelangganFormController implements Initializable{
 	}
 	
 	public void bkeluarActionPerformed(ActionEvent event) {
+		parentController.refresh(event);
 		Stage stage = (Stage) closeButton.getScene().getWindow();
 		stage.close();
 	}
@@ -175,7 +175,7 @@ public class DataPelangganFormController implements Initializable{
 		
 	}
 	
-	public void updateForm(Pelanggan pelanggan) {
+	public void updateForm(Parent root, Pelanggan pelanggan) {
 		txtid.setText(String.valueOf(pelanggan.getId()));
 		txtid.setEditable(false);
 		txtid.setDisable(true);
@@ -187,7 +187,19 @@ public class DataPelangganFormController implements Initializable{
 		}
 		txttelp.setText(pelanggan.getTelepon());
 		txtalamat.setText(pelanggan.getAlamat());
+		Scene scene = new Scene(root);
+		String css = this.getClass().getResource("application.css").toExternalForm();
+		scene.getStylesheets().add(css);
+		Stage stage = new Stage();
+		Image image = new Image("application/img/Dva.png");
+		stage.getIcons().add(image);
+		stage.setTitle("Form Data Pelanggan");
+		stage.setScene(scene);
+		stage.show();
 	}
 
+	public void setParentController(DataPelangganController controller) {
+		parentController = controller;
+	}
 
 }

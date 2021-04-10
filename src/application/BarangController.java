@@ -51,13 +51,15 @@ public class BarangController implements Initializable {
 	@FXML
 	private TextField txtcari;
 	
+	private BarangFormController insertChildController;
+	private BarangFormController updateChildController;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		datatable();
 	}
 	
 	protected void datatable() {
-		System.out.println("datatable");
 		ObservableList<Barang> list = FXCollections.observableArrayList() ;
 		
 		try {
@@ -136,18 +138,11 @@ public class BarangController implements Initializable {
 			Barang rowData = row.getItem();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("BarangForm.fxml"));
 			try {
-				Parent root1 = (Parent) loader.load();
-				BarangFormController controller = loader.getController();
-				controller.updateForm(rowData);
-				Scene scene = new Scene(root1);
-				String css = this.getClass().getResource("application.css").toExternalForm();
-				scene.getStylesheets().add(css);
-				Stage stage = new Stage();
-				Image image = new Image("application/img/Dva.png");
-				stage.getIcons().add(image);
-				stage.setTitle("Form Barang");
-				stage.setScene(scene);
-				stage.show();
+				Parent root = (Parent) loader.load();
+				updateChildController = loader.getController();
+				updateChildController.setParentController(this);
+				updateChildController.updateForm(root, rowData);
+				
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -160,8 +155,9 @@ public class BarangController implements Initializable {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("BarangForm.fxml"));
 			Parent root1 = (Parent) loader.load();
 			
-			BarangFormController controller = loader.getController();
-			controller.createForm(root1);
+			insertChildController = loader.getController();
+			insertChildController.setParentController(this);
+			insertChildController.createForm(root1);
 			
 		} catch (Exception e) {
 			// TODO: handle exception

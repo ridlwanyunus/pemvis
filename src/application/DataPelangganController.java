@@ -55,13 +55,15 @@ public class DataPelangganController implements Initializable {
 	@FXML
 	private TextField txtcari;
 	
+	private DataPelangganFormController insertChildController;
+	private DataPelangganFormController updateChildController;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		datatable();
 	}
 	
 	protected void datatable() {
-		System.out.println("datatable");
 		ObservableList<Pelanggan> list = FXCollections.observableArrayList() ;
 		
 		try {
@@ -104,9 +106,7 @@ public class DataPelangganController implements Initializable {
 	}
 
 	public void refresh(ActionEvent event) {
-		System.out.println("im here");
 		ObservableList<Pelanggan> list = FXCollections.observableArrayList() ;
-		
 		try {
 			String cariitem = txtcari.getText();
 			String sql = "SELECT * FROM pelanggan where id like '%"+cariitem+"%' or nmplgn like '%"+cariitem+"%' order by id asc";
@@ -137,39 +137,32 @@ public class DataPelangganController implements Initializable {
 	
 	public void tblplgMouseClicked(MouseEvent event, TableRow<Pelanggan>  row){
 		if(event.getClickCount() == 2 && (!(row.isEmpty()))) {
-		Pelanggan rowData = row.getItem();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataPelangganForm.fxml"));
-		try {
-			Parent root1 = (Parent) loader.load();
-			DataPelangganFormController controller = loader.getController();
-			controller.updateForm(rowData);
-			Scene scene = new Scene(root1);
-			String css = this.getClass().getResource("application.css").toExternalForm();
-			scene.getStylesheets().add(css);
-			Stage stage = new Stage();
-			Image image = new Image("application/img/Dva.png");
-			stage.getIcons().add(image);
-			stage.setTitle("Form Data Pelanggan");
-			stage.setScene(scene);
-			stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
+			Pelanggan rowData = row.getItem();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("DataPelangganForm.fxml"));
+			try {
+				Parent root = loader.load();
+				updateChildController = loader.getController();
+				updateChildController.setParentController(this);
+				updateChildController.updateForm(root, rowData);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
-		
-	}
 	}
 	
 	public void showForm(ActionEvent event) {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataPelangganForm.fxml"));
+		Parent root;
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("DataPelangganForm.fxml"));
-			Parent root1 = (Parent) loader.load();
-			
-			DataPelangganFormController controller = loader.getController();
-			controller.createForm(root1);
-			
-		} catch (Exception e) {
-			// TODO: handle exception
+			root = loader.load();
+			insertChildController = loader.getController();
+			insertChildController.setParentController(this);
+			insertChildController.createForm(root);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 	}
 	
 }

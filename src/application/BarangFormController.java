@@ -47,6 +47,8 @@ public class BarangFormController implements Initializable {
 	
 	private Connection conn = new Koneksi().connect();
 	
+	private BarangController parentController;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 //		cbjenis = new ChoiceBox(FXCollections.observableArrayList("Makanan", "Minuman"));
@@ -125,7 +127,7 @@ public class BarangFormController implements Initializable {
 				PreparedStatement stat = conn.prepareStatement(sql);
 				stat.executeUpdate();
 				JOptionPane.showMessageDialog(null, "Data "+txtid.getText()+" berhasil dihapus");
-				kosong(event);
+				parentController.refresh(event);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, "Data gagal dihapus");
 			}
@@ -157,6 +159,7 @@ public class BarangFormController implements Initializable {
 	}
 	
 	public void bkeluarActionPerformed(ActionEvent event) {
+		parentController.refresh(event);
 		Stage stage = (Stage) closeButton.getScene().getWindow();
 		stage.close();
 	}
@@ -165,7 +168,7 @@ public class BarangFormController implements Initializable {
 		
 	}
 	
-	public void updateForm(Barang barang) {
+	public void updateForm(Parent root, Barang barang) {
 		txtid.setText(String.valueOf(barang.getKdBarang()));
 		txtid.setEditable(false);
 		txtid.setDisable(true);
@@ -173,5 +176,19 @@ public class BarangFormController implements Initializable {
 		cbjenis.setValue(barang.getJenis());
 		txthbeli.setText(String.valueOf(barang.getHargabeli()));
 		txthjual.setText(String.valueOf(barang.getHargajual()));
+		Scene scene = new Scene(root);
+		String css = this.getClass().getResource("application.css").toExternalForm();
+		scene.getStylesheets().add(css);
+		Stage stage = new Stage();
+		Image image = new Image("application/img/Dva.png");
+		stage.getIcons().add(image);
+		stage.setTitle("Form Barang");
+		stage.setScene(scene);
+		stage.show();
+	}
+
+
+	public void setParentController(BarangController controller) {
+		parentController = controller;
 	}
 }

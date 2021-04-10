@@ -55,13 +55,15 @@ public class KasirController implements Initializable {
 	@FXML
 	private TextField txtcari;
 	
+	private KasirFormController insertChildController;
+	private KasirFormController updateChildController;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		datatable();
 	}
 	
 	protected void datatable() {
-		System.out.println("datatable");
 		ObservableList<Kasir> list = FXCollections.observableArrayList() ;
 		
 		try {
@@ -107,7 +109,6 @@ public class KasirController implements Initializable {
 	}
 
 	public void refresh(ActionEvent event) {
-		System.out.println("im here");
 		ObservableList<Kasir> list = FXCollections.observableArrayList() ;
 		
 		try {
@@ -146,18 +147,10 @@ public class KasirController implements Initializable {
 			Kasir rowData = row.getItem();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("KasirForm.fxml"));
 			try {
-				Parent root1 = (Parent) loader.load();
-				KasirFormController controller = loader.getController();
-				controller.updateForm(rowData);
-				Scene scene = new Scene(root1);
-				String css = this.getClass().getResource("application.css").toExternalForm();
-				scene.getStylesheets().add(css);
-				Stage stage = new Stage();
-				Image image = new Image("application/img/Dva.png");
-				stage.getIcons().add(image);
-				stage.setTitle("Form Kasir");
-				stage.setScene(scene);
-				stage.show();
+				Parent root = (Parent) loader.load();
+				updateChildController = loader.getController();
+				updateChildController.setParentController(this);
+				updateChildController.updateForm(root, rowData);
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -168,10 +161,11 @@ public class KasirController implements Initializable {
 	public void showForm(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("KasirForm.fxml"));
-			Parent root1 = (Parent) loader.load();
+			Parent root = (Parent) loader.load();
 			
-			KasirFormController controller = loader.getController();
-			controller.createForm(root1);
+			insertChildController = loader.getController();
+			insertChildController.setParentController(this);
+			insertChildController.createForm(root);
 			
 		} catch (Exception e) {
 			// TODO: handle exception

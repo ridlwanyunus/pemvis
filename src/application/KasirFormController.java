@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -90,6 +93,8 @@ public class KasirFormController implements Initializable {
 	
 	
 	private Connection conn = new Koneksi().connect();
+	
+	private KasirController parentController;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -204,6 +209,7 @@ public class KasirFormController implements Initializable {
 				PreparedStatement stat = conn.prepareStatement(sql);
 				stat.executeUpdate();
 				JOptionPane.showMessageDialog(null, "Data "+txtid.getText()+" berhasil dihapus");
+				parentController.refresh(event);
 				kosong(event);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, "Data gagal dihapus");
@@ -238,6 +244,7 @@ public class KasirFormController implements Initializable {
 	}
 	
 	public void bkeluarActionPerformed(ActionEvent event) {
+		parentController.refresh(event);
 		Stage stage = (Stage) closeButton.getScene().getWindow();
 		stage.close();
 	}
@@ -246,7 +253,20 @@ public class KasirFormController implements Initializable {
 		
 	}
 	
-	public void updateForm(Kasir kasir) {
+	public void updateForm(Parent root, Kasir kasir) {
+		
+		try {
+			String sql = "SELECT password FROM kasir where id_kasir='"+kasir.getIdKasir()+"'";
+			Statement statement = conn.createStatement();
+			ResultSet hasil = statement.executeQuery(sql);
+			while(hasil.next()) {
+				txtpassword.setText(hasil.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		txtid.setText(String.valueOf(kasir.getIdKasir()));
 		txtid.setEditable(false);
 		txtid.setDisable(true);
@@ -259,5 +279,21 @@ public class KasirFormController implements Initializable {
 		txttelp.setText(kasir.getNoTelepon());
 		txtalamat.setText(kasir.getAlamat());
 		txtagama.setText(kasir.getAgama());
+		
+		Scene scene = new Scene(root);
+		String css = this.getClass().getResource("application.css").toExternalForm();
+		scene.getStylesheets().add(css);
+		Stage stage = new Stage();
+		Image image = new Image("application/img/Dva.png");
+		stage.getIcons().add(image);
+		stage.setTitle("Form Kasir");
+		stage.setScene(scene);
+		stage.show();
+	}
+
+
+	public void setParentController(KasirController kasirController) {
+		parentController = kasirController;
+		
 	}
 }
