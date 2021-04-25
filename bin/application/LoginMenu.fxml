@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -42,7 +43,7 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <TextField fx:id="tfPassword" prefHeight="26.0" prefWidth="282.0" />
+                              <PasswordField fx:id="tfPassword" prefHeight="26.0" prefWidth="295.0" />
                            </children>
                         </HBox>
                         <Button fx:id="logniButton" mnemonicParsing="false" onAction="#login" prefHeight="35.0" prefWidth="280.0" style="-fx-border-width: 0; -fx-background-radius: 100; -fx-text-fill: #fff; -fx-background-color: #8e44ad;" text="Login">

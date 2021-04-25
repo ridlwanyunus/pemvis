@@ -87,7 +87,7 @@ public class HomeController implements Initializable{
 	public void btnMenu3Hanlder(ActionEvent event) throws IOException {
 		resetButton();
 		btnMenu3.getStyleClass().add("buttonMenuActive");
-		Node node = (Node) FXMLLoader.load(getClass().getResource("Menu3.fxml"));
+		Node node = (Node) FXMLLoader.load(getClass().getResource("Nota.fxml"));
 		homeAnchorPane2.getChildren().setAll(node);
 	}
 	

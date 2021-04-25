@@ -58,6 +58,8 @@ public class DataPelangganController implements Initializable {
 	private DataPelangganFormController insertChildController;
 	private DataPelangganFormController updateChildController;
 	
+	private IsiFormController parentController;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		datatable();
@@ -97,7 +99,10 @@ public class DataPelangganController implements Initializable {
 				TableRow<Pelanggan>  row = new TableRow<>();
 				row.setOnMouseClicked(
 					event -> {
-						tblplgMouseClicked(event, row);
+						if(parentController == null)
+							tblplgMouseClicked(event, row);
+						else
+							tblIsiFormMouseClicked(event, row);
 					}
 				);
 				return row;
@@ -150,6 +155,13 @@ public class DataPelangganController implements Initializable {
 		}
 	}
 	
+	public void tblIsiFormMouseClicked(MouseEvent event, TableRow<Pelanggan>  row) {
+		if(event.getClickCount() == 2 && (!(row.isEmpty()))) {
+			Pelanggan rowData = row.getItem();
+			parentController.setItemTerpilihPelanggan(rowData);
+		}
+	}
+	
 	public void showForm(ActionEvent event) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataPelangganForm.fxml"));
 		Parent root;
@@ -165,4 +177,19 @@ public class DataPelangganController implements Initializable {
 		
 	}
 	
+	public void open(Parent root) {
+		Scene scene = new Scene(root);
+		String css = this.getClass().getResource("application.css").toExternalForm();
+		scene.getStylesheets().add(css);
+		Stage stage = new Stage();
+		Image image = new Image("application/img/Dva.png");
+		stage.getIcons().add(image);
+		stage.setTitle("Form Data Pelanggan");
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void setParentController(IsiFormController controller) {
+		parentController = controller;
+	}
 }

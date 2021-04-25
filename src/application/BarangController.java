@@ -54,6 +54,8 @@ public class BarangController implements Initializable {
 	private BarangFormController insertChildController;
 	private BarangFormController updateChildController;
 	
+	private IsiFormController parentController;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		datatable();
@@ -93,7 +95,10 @@ public class BarangController implements Initializable {
 				TableRow<Barang>  row = new TableRow<>();
 				row.setOnMouseClicked(
 					event -> {
-						tblplgMouseClicked(event, row);
+						if(parentController == null)
+							tblplgMouseClicked(event, row);
+						else
+							tblIsiFormMouseClicked(event, row);
 					}
 				);
 				return row;
@@ -150,6 +155,13 @@ public class BarangController implements Initializable {
 		}
 	}
 	
+	public void tblIsiFormMouseClicked(MouseEvent event, TableRow<Barang>  row) {
+		if(event.getClickCount() == 2 && (!(row.isEmpty()))) {
+			Barang rowData = row.getItem();
+			parentController.setItemTerpilihBarang(rowData);
+		}
+	}
+	
 	public void showForm(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("BarangForm.fxml"));
@@ -162,5 +174,21 @@ public class BarangController implements Initializable {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+	}
+	
+	public void open(Parent root) {
+		Scene scene = new Scene(root);
+		String css = this.getClass().getResource("application.css").toExternalForm();
+		scene.getStylesheets().add(css);
+		Stage stage = new Stage();
+		Image image = new Image("application/img/Dva.png");
+		stage.getIcons().add(image);
+		stage.setTitle("Form Barang");
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void setParentController(IsiFormController controller) {
+		parentController = controller;
 	}
 }

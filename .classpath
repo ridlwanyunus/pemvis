@@ -10,5 +10,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/fontawesome"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/mysql-connector"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MaterialFx"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jasperreport"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
